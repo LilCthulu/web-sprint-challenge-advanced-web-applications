@@ -1,6 +1,12 @@
+import axios from "axios";
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import BubblePage from './BubblePage'
+
+const SUBMIT =   <Route path="/bubblepage" component={BubblePage} />
 
 const Login = () => {
+
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
@@ -16,7 +22,13 @@ const Login = () => {
     <div>
       <h1>Welcome to the Bubble App!</h1>
       <div data-testid="loginForm" className="login-form">
-        <h2>Build login form here</h2>
+        <form> 
+          <label >
+          Username <input data-testid= 'username' type='text' name= 'userId'></input>
+          Password <input data-testid= 'password' type='text' name= 'userPass'></input>
+          </label>
+          <input type="submit" value= "Submit" onClick= {SUBMIT}/>
+        </form>
       </div>
 
       <p data-testid="errorMessage" className="error">{error}</p>

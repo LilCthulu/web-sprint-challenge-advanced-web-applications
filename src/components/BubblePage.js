@@ -1,14 +1,17 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import Bubbles from "./Bubbles";
-import ColorList from "./ColorList";
+// import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
+  axios.get(`http://localhost:5000/api/colors`)
+  .then(res => {setColorList(res.data)})
 
   return (
     <div className="container">
-      <ColorList colors={colorList} updateColors={setColorList} />
+      {/* <ColorList colors={colorList} updateColors={setColorList} /> */}
       <Bubbles colors={colorList} />
     </div>
   );
